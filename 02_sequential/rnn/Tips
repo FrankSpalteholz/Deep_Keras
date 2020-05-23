@@ -1,0 +1,47 @@
+Ändern Sie bei den hintereinandergeschalteten rekurrenten Layern die Anzahl der Einheiten pro Layer.
+Die im Beispiel gewählte Anzahl ist weitgehend willkürlich und daher vermutlich suboptimal.
+
+􏰀Ändern Sie die Lernrate des RMSProp-Optimierers.
+
+􏰀Probieren Sie aus, statt der GRU-Layer LSTM-Layer zu verwenden.
+
+􏰀Probieren Sie aus, nach den rekurrenten Layern einen größeren Fully-connect- ed Regressor zu verwenden,
+also einen größeren Dense-Layer oder vielleicht sogar einen Stapel von Dense-Layern.
+
+Vergessen Sie nicht, die Modelle mit der besten Leistung bezüglich des mittleren absoluten Fehlers bei den
+Validierungsdaten früher oder später auch auf die Testdatenmenge anzuwenden! Andernfalls entwickeln
+Sie an die Validierungsmenge überangepasste Architekturen!
+
+Wie Sie seit Kapitel 4 wissen, ist es sinnvoll, eine auf dem gesunden Men- schenverstand beruhende Abschätzung
+vorzunehmen, mit der Sie Ihre Ergebnisse vergleichen können. Wenn Sie nicht wissen, welche Leistung es zu schla-
+gen gilt, können Sie auch nicht feststellen, ob Sie Fortschritte machen.
+
+􏰀Probieren Sie zunächst statt rechenaufwendiger Modelle einfache aus, um gegebenenfalls weiteren Aufwand zu
+rechtfertigen. Mitunter stellt sich heraus, dass ein einfaches Modell die beste Lösung ist.
+􏰀
+Wenn Sie Daten verwenden, bei denen die zeitliche Reihenfolge von Bedeu- tung ist, sind RNNs bestens geeignet
+und den Modellen deutlich überlegen, die zunächst die Dimensionalität der zeitlichen Daten verringern.
+
+􏰀Wenn Sie das Dropout-Verfahren auf RNNs anwenden, sollten Sie eine Drop- out-Maske und eine rekurrente
+Dropout-Maske verwenden, die zeitlich kon- stant sind. Diese Masken sind in Keras rekurrenten Layern integriert,
+Sie brauchen also nur noch die Argumente dropout und recurrent_dropout anzugeben.
+
+􏰀Hintereinandergeschaltete RNNs bieten eine höhere Repräsentationsfähigkeit als einzelne RNN-Layer.
+Sie sind allerdings auch erheblich rechenauf- wendiger, deshalb lohnt ihr Einsatz nicht immer.
+Sie bieten bei komplexen Aufgaben (z.B. der maschinellen Übersetzung von Fremdsprachen) zwar deutliche Vorteile,
+die bei kleineren, einfachen Aufgaben aber nicht ins Gewicht fallen.
+
+􏰀Bidirektionale RNNs, die Sequenzen in normaler und in umgekehrter Reihen- folge verarbeiten, sind gut für die
+Verarbeitung natürlicher Sprache geeignet, weisen jedoch bei sequenziellen Daten Schwächen auf, wenn die jüngste
+Vergangenheit erheblich informativer ist als der Anfang der Sequenz.
+
+2-D-CNNs sind besonders gut für die Verarbeitung visueller Muster im zweidi- mensionalen Raum geeignet.
+Auf ähnliche Weise eignen sich 1-D-CNNs beson- ders gut für die Verarbeitung zeitlicher Muster.
+
+Für bestimmte Aufgaben, insbesondere bei der Verarbeitung von natürlicher Sprache, stellen sie eine schnelle Alternative zu RNNs dar.
+Typischerweise sind 1-D-CNNs ganz ähnlich wie ihre zweidimensionalen Pendants aus der Welt des maschinellen Sehens aufgebaut:
+Sie bestehen aus Sta- peln von Conv1D- und MaxPooling1D-Layern und enden mit einer globalen Pooling- oder Flattening-Operation.
+
+Da RNNs bei der Verarbeitung von sehr langen Sequenzen einen extremen Rechenaufwand erfordern, eindimensionale CNNs aber nicht,
+erweist es sich oft als nützlich, vor dem RNN ein 1-D-CNN für die Vorverarbeitung der Daten einzusetzen, in der
+die Sequenzen verkürzt und für das RNN nützliche Repräsentationen extrahiert werden.
