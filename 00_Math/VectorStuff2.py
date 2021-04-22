@@ -17,7 +17,6 @@ Y = np.matmul(X,W)+c.T
 
 print(Y[0])
 
-def relu(M):
 
 
 print(np.matmul(Y,w))

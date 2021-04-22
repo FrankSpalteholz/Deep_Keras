@@ -18,6 +18,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+
 from tensorflow.keras.layers import Activation, Dense, Input
 from tensorflow.keras.layers import Conv2D, Flatten
 from tensorflow.keras.layers import Reshape, Conv2DTranspose
